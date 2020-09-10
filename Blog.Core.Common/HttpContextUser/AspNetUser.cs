@@ -20,6 +20,7 @@ namespace Blog.Core.Common.HttpContextUser
 
         public string Name => GetName();
 
+        public string RealName => _accessor.HttpContext.User.FindFirstValue("RealName");
         private string GetName()
         {
             if (IsAuthenticated() && _accessor.HttpContext.User.Identity.Name.IsNotEmptyOrNull())
