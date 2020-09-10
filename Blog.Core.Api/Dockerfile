@@ -32,5 +32,5 @@ RUN echo 'Asia/Shanghai' >/etc/timezone
         #&& supervisord -c /etc/supervisord.conf
 WORKDIR /app
 COPY . . 
-EXPOSE 8081 
+EXPOSE 8089 
 ENTRYPOINT ["dotnet", "Blog.Core.Api.dll","-b","0.0.0.0"]
