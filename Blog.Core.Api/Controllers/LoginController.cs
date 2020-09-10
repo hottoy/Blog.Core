@@ -163,6 +163,7 @@ namespace Blog.Core.Controllers
                 //如果是基于用户的授权策略，这里要添加用户;如果是基于角色的授权策略，这里要添加角色
                 var claims = new List<Claim> {
                     new Claim(ClaimTypes.Name, name),
+                    new Claim("RealName", user.FirstOrDefault().uRealName.ToString()),
                     new Claim(JwtRegisteredClaimNames.Jti, user.FirstOrDefault().uID.ToString()),
                     new Claim(ClaimTypes.Expiration, DateTime.Now.AddSeconds(_requirement.Expiration.TotalSeconds).ToString()) };
                 claims.AddRange(userRoles.Split(',').Select(s => new Claim(ClaimTypes.Role, s)));
@@ -232,6 +233,7 @@ namespace Blog.Core.Controllers
                     //如果是基于用户的授权策略，这里要添加用户;如果是基于角色的授权策略，这里要添加角色
                     var claims = new List<Claim> {
                     new Claim(ClaimTypes.Name, user.uLoginName),
+                    new Claim("RealName", user.uRealName.ToString()),
                     new Claim(JwtRegisteredClaimNames.Jti, tokenModel.Uid.ObjToString()),
                     new Claim(ClaimTypes.Expiration, DateTime.Now.AddSeconds(_requirement.Expiration.TotalSeconds).ToString()) };
                     claims.AddRange(userRoles.Split(',').Select(s => new Claim(ClaimTypes.Role, s)));
