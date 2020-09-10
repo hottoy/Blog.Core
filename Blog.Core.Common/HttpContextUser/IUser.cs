@@ -6,6 +6,7 @@ namespace Blog.Core.Common.HttpContextUser
     public interface IUser
     {
         string Name { get; }
+        string RealName { get; }
         int ID { get; }
         bool IsAuthenticated();
         IEnumerable<Claim> GetClaimsIdentity();
