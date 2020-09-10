@@ -2,7 +2,7 @@ git pull
 
 
 @echo off
-for /f "tokens=5" %%i in ('netstat -aon ^| findstr ":8081"') do (
+for /f "tokens=5" %%i in ('netstat -aon ^| findstr ":8089"') do (
     set n=%%i
 )
 taskkill /f /pid %n%
